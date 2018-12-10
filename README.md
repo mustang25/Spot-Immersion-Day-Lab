@@ -34,7 +34,7 @@ a.	AMI ID: Specify an AMI ID from which to launch the instance. You can use an A
 b.	Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
 c.	Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
 2.	Once you've gathered the data, create the launch template from the command line as follows:
-$ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
+`$ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"`
 
 
 Example return
