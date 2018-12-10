@@ -1,44 +1,34 @@
 # Spot-Immersion-Day-Lab
- 
-1	Table of Contents
-2	Overview	4
-3	Pre-Requisites	4
-4	Creating a Launch Template	4
-5	Launching an EC2 Spot Instance via the RunInstances API	6
-6	Launching EC2 Spot Instances via a Spot Fleet request	6
-7	Monitoring Your Spot Fleet	7
-8	Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet	8
-9	Launching EC2 Spot Instances via an EC2 Auto Scaling Group	9
-10	Finding Running Spot Instances	9
-11	Cleanup	10
 
  
-2	Overview
+# Overview
 Amazon EC2 Spot instances are spare compute capacity in the AWS Cloud available to you at steep discounts compared to On-Demand prices. EC2 Spot enables you to optimize your costs on the AWS cloud and scale your application’s throughput up to 10X for the same budget.
 
 This lab will walk you through creating an EC2 Launch Template, and then using this Launch Template to launch EC2 Spot Instances the following 3 ways: the EC2 RunInstances API, EC2 Spot Fleet, and Amazon EC2 Auto Scaling.
-3	Pre-Requisites
-This lab requires:
-•	A laptop with Wi-Fi running Microsoft Windows, Mac OS X, or Linux.
-•	The AWS CLI installed and configured.
-•	An Internet browser such as Chrome, Firefox, Safari, or Edge.
-•	An AWS account. You will create AWS resources including IAM roles during the workshop.
-4	Creating a Launch Template 
 
+# Pre-Requisites
+This lab requires:
+- A laptop with Wi-Fi running Microsoft Windows, Mac OS X, or Linux.
+- The AWS CLI installed and configured.
+- An Internet browser such as Chrome, Firefox, Safari, or Edge.
+- An AWS account. You will create AWS resources including IAM roles during the workshop.
+
+# Creating a Launch Template 
 You can create a launch template that contains the configuration information to launch an instance. Launch templates enable you to store launch parameters so that you do not have to specify them every time you launch an instance. For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances. When you launch an instance using the Amazon EC2 console, an AWS SDK, or a command line tool, you can specify the launch template to use.
 
 To create a new launch template using the command line
 
-1.	You'll need to gather the following data
-a.	AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
-b.	Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
-c.	Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
-2.	Once you've gathered the data, create the launch template from the command line as follows:
-`$ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"`
+1. You'll need to gather the following data
+    a. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
+    b. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
+    c. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
+2. Once you've gathered the data, create the launch template from the command line as follows:
+~~~~
+$ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
+~~~~
 
-
-Example return
-
+## Example return
+~~~~
 {
     "LaunchTemplate": {
         "LaunchTemplateId": "lt-072835f1531b31e88",
@@ -49,7 +39,7 @@ Example return
         "LatestVersionNumber": 1
     }
 }
-
+~~~~
 3.	Note the LaunchTemplateId (eg. "lt-0abcd290751193123") or LaunchTemplateName (eg. "TemplateForSpot") of the newly created Launch Template for the next steps.
 5	Launching an EC2 Spot Instance via the RunInstances API
 
