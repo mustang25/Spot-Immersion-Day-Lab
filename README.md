@@ -21,7 +21,11 @@ To create a new launch template using the command line
     3. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
 2. Once you've gathered the data, create the launch template from the command line as follows:
 ~~~~
-$ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
+aws ec2 create-launch-template --launch-template-name TemplateForSpot \
+--version-description TemplateForSpotVersion1 --launch-template-data \
+"{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\
+\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":\
+[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
 ~~~~
 
 ## Example return
@@ -43,7 +47,7 @@ $ aws ec2 create-launch-template --launch-template-name TemplateForSpot --versio
 
 To launch an EC2 Spot Instance from a launch template using the command line, use the run-instances AWS CLI command and specify the --launch-template parameter as well as the --instance-market-options parameter.
 ~~~~
-$ aws ec2 run-instances --launch-template LaunchTemplateName=TemplateForSpot,Version=1 --instance-market-options MarketType=spot
+aws ec2 run-instances --launch-template LaunchTemplateName=TemplateForSpot,Version=1 --instance-market-options MarketType=spot
 ~~~~
 That is all there is to it! You can see your Spot Instance request in the Spot console at https://console.aws.amazon.com/ec2spot.
 
@@ -82,7 +86,7 @@ An EC2 Fleet contains the configuration information to launch a fleet—or group
 To create a new EC2 Fleet using the command line, run the following
 
 ~~~~
-$ aws ec2 create-fleet --launch-template-configs LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" --target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
+aws ec2 create-fleet --launch-template-configs LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" --target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
 ~~~~
 Example return
 ~~~~
@@ -94,11 +98,11 @@ This EC2 Fleet has requested a total capacity of 4 instances- 1 On-Demand and 3 
 
 Check them out by running
 ~~~~
-$ aws ec2 describe-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
+aws ec2 describe-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
 ~~~~
 and
 ~~~~
-$ aws ec2 describe-fleet-instances --fleet-id fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
+aws ec2 describe-fleet-instances --fleet-id fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
 ~~~~
 
 # Launching EC2 Spot Instances via an EC2 Auto Scaling Group
@@ -112,7 +116,7 @@ In order to configure Auto Scaling to use EC2 Spot Instances, you'll need to cre
 To create a new version of the launch template, run
 
 ~~~~
-$ aws ec2 create-launch-template-version --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion2 --source-version 1 --launch-template-data "{\"InstanceMarketOptions\":{\"MarketType\":\"spot\"}}"
+aws ec2 create-launch-template-version --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion2 --source-version 1 --launch-template-data "{\"InstanceMarketOptions\":{\"MarketType\":\"spot\"}}"
 ~~~~
 
 Example output
@@ -230,4 +234,3 @@ To delete a launch template
 2.	In the navigation pane, choose Launch Templates and select the launch template.
 3.	Choose Actions, Delete template.
 4.	Choose Delete launch template.
-
