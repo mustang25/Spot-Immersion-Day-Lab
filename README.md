@@ -218,7 +218,7 @@ When you are finished using your EC2 Fleet, you can delete the EC2 Fleet and ter
 
 To delete your EC2 Fleet and terminate the running instances
 ~~~~
-$ aws ec2 delete-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183 --terminate-instances
+aws ec2 delete-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183 --terminate-instances
 ~~~~
 ## Canceling your Spot Fleet Request
 
@@ -230,7 +230,7 @@ To cancel a Spot Fleet request using the console
 3.	Choose Actions, and then choose Cancel spot request.
 4.	In Cancel spot request, choose Confirm.
 
-## Terminating a Spot Instance
+### Terminating a Spot Instance
 
 #### To terminate a Spot Instance using the console
 1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
@@ -238,7 +238,7 @@ To cancel a Spot Fleet request using the console
 3.	Select the instance, and choose Actions, Instance State, Terminate.
 4.	Choose Yes, Terminate when prompted for confirmation.
 
-## Deleting a Launch Template
+### Deleting a Launch Template
 
 If you no longer require a launch template, you can delete it. Deleting a launch template deletes all of its versions.
 
