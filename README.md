@@ -1,3 +1,21 @@
+Table of contents
+=================
+
+<!--ts-->
+   * [Overview](#Overview)
+   * [Table of contents](#table-of-contents)
+   * [Installation](#installation)
+   * [Usage](#usage)
+      * [STDIN](#stdin)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+      * [Multiple files](#multiple-files)
+      * [Combo](#combo)
+      * [Auto insert and update TOC](#auto-insert-and-update-toc)
+   * [Tests](#tests)
+   * [Dependency](#dependency)
+<!--te-->
+
 # Overview
 Amazon EC2 Spot instances are spare compute capacity in the AWS Cloud available to you at steep discounts compared to On-Demand prices. EC2 Spot enables you to optimize your costs on the AWS cloud and scale your application’s throughput up to 10X for the same budget.
 
