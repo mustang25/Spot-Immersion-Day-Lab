@@ -5,12 +5,12 @@ Table of contents
    * [Overview](#Overview)
    * [Pre-Requisites](#Pre-Requisites)
    * [Creating a Launch Template](#Creating-a-Launch-Template )
-   * [Launching an EC2 Spot Instance via the RunInstances API](#Launching an EC2 Spot Instance via the RunInstances API)
-   * [Launching EC2 Spot Instances via a Spot Fleet request](#Launching EC2 Spot Instances via a Spot Fleet request)
-   * [Monitoring Your Spot Fleet](#Monitoring Your Spot Fleet)
-   * [Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet](#Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet)
-   * [Launching EC2 Spot Instances via an EC2 Auto Scaling Group](#Launching EC2 Spot Instances via an EC2 Auto Scaling Group)
-   * [Finding Running Spot Instances](#Finding Running Spot Instances)
+   * [Launching an EC2 Spot Instance via the RunInstances API](#Launching-an-EC2-Spot-Instance-via-the-RunInstances-API)
+   * [Launching EC2 Spot Instances via a Spot Fleet request](#Launching-EC2-Spot-Instances-via-a-Spot-Fleet-request)
+   * [Monitoring Your Spot Fleet](#Monitoring-Your-Spot-Fleet)
+   * [Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet](#Launching-EC2-Spot-Instances-with-On-Demand-Instances-via-an-EC2-Fleet)
+   * [Launching EC2 Spot Instances via an EC2 Auto Scaling Group](#Launching-EC2-Spot-Instances-via-an-EC2-Auto-Scaling-Group)
+   * [Finding Running Spot Instances](#Finding-Running-Spot-Instances)
    * [Cleanup](#Cleanup)
 <!--te-->
 
