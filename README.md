@@ -3,17 +3,15 @@ Table of contents
 
 <!--ts-->
    * [Overview](#Overview)
-   * [Table of contents](#table-of-contents)
-   * [Installation](#installation)
-   * [Usage](#usage)
-      * [STDIN](#stdin)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-      * [Auto insert and update TOC](#auto-insert-and-update-toc)
-   * [Tests](#tests)
-   * [Dependency](#dependency)
+   * [Pre-Requisites](#Pre-Requisites)
+   * [Creating a Launch Template](#Creating a Launch Template )
+   * [Launching an EC2 Spot Instance via the RunInstances API](#Launching an EC2 Spot Instance via the RunInstances API)
+   * [Launching EC2 Spot Instances via a Spot Fleet request](#Launching EC2 Spot Instances via a Spot Fleet request)
+   * [Monitoring Your Spot Fleet](#Monitoring Your Spot Fleet)
+   * [Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet](#Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet)
+   * [Launching EC2 Spot Instances via an EC2 Auto Scaling Group](#Launching EC2 Spot Instances via an EC2 Auto Scaling Group)
+   * [Finding Running Spot Instances](#Finding Running Spot Instances)
+   * [Cleanup](#Cleanup)
 <!--te-->
 
 # Overview
