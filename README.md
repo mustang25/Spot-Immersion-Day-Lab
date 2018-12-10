@@ -113,11 +113,11 @@ This EC2 Fleet has requested a total capacity of 4 instances- 1 On-Demand and 3 
 
 #### Check them out by running
 ~~~~
-aws ec2 describe-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
+aws ec2 describe-fleets --fleet-ids <your-fleet-id>
 ~~~~
 #### and
 ~~~~
-aws ec2 describe-fleet-instances --fleet-id fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
+aws ec2 describe-fleet-instances --fleet-id <your-fleet-id>
 ~~~~
 
 # Launching EC2 Spot Instances via an EC2 Auto Scaling Group
@@ -204,7 +204,7 @@ Now that we've launched Spot Instances via RunInstances, Spot Fleet, EC2 Fleet, 
 4. Alternatively, in the navigation pane, choose Instances. In the top right corner, choose the Show/Hide icon, and then select Lifecycle. For each instance, Lifecycle is either normal, spot, or scheduled.
 # Cleanup
 
-## Delete Your Auto Scaling Group
+### Delete Your Auto Scaling Group
 
 To delete your Auto Scaling group using the console
 1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
@@ -212,15 +212,15 @@ To delete your Auto Scaling group using the console
 3.	On the Auto Scaling groups page, select your Auto Scaling group. and choose Actions, Delete.
 4.	When prompted for confirmation, choose Yes, Delete.
 
-## Delete your EC2 Fleet
+### Delete your EC2 Fleet
 
 When you are finished using your EC2 Fleet, you can delete the EC2 Fleet and terminate all of the running instances.
 
 To delete your EC2 Fleet and terminate the running instances
 ~~~~
-aws ec2 delete-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183 --terminate-instances
+aws ec2 delete-fleets --fleet-ids <your-fleet-id> --terminate-instances
 ~~~~
-## Canceling your Spot Fleet Request
+### Canceling your Spot Fleet Request
 
 When you are finished using your Spot Fleet, you can cancel the Spot Fleet request. This cancels all Spot requests associated with the Spot Fleet, so that no new Spot Instances are launched for your Spot Fleet. You must specify whether the Spot Fleet should terminate its Spot Instances. If you terminate the instances, the Spot Fleet request enters the cancelled_terminating state. Otherwise, the Spot Fleet request enters the cancelled_running state and the instances continue to run until they are interrupted or you terminate them manually.
 
