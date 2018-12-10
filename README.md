@@ -16,9 +16,9 @@ You can create a launch template that contains the configuration information to 
 To create a new launch template using the command line
 
 1. You'll need to gather the following data
-    a. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
-    b. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
-    c. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
+    1. a. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
+    2. b. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
+    3. c. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
 2. Once you've gathered the data, create the launch template from the command line as follows:
 ~~~~
 $ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
@@ -65,7 +65,6 @@ a.	For Launch template, choose the launch template you created in the previous s
 9.	Choose Launch.
 The request type is fleet. When the request is fulfilled, requests of type instance are added, where the state is active and the status is fulfilled.
 
- 
 # Monitoring Your Spot Fleet
 
 The Spot Fleet launches Spot Instances when your maximum price exceeds the Spot price and capacity is available. The Spot Instances run until they are interrupted or you terminate them.
@@ -85,9 +84,8 @@ To create a new EC2 Fleet using the command line, run the following
 ~~~~
 $ aws ec2 create-fleet --launch-template-configs LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" --target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
 ~~~~
-~~~~
 Example return
-
+~~~~
 {
     "FleetId": "fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183"
 }
