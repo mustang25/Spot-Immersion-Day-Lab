@@ -16,9 +16,9 @@ You can create a launch template that contains the configuration information to 
 To create a new launch template using the command line
 
 1. You'll need to gather the following data
-    1. a. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
-    2. b. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
-    3. c. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
+    1. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
+    2. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
+    3. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
 2. Once you've gathered the data, create the launch template from the command line as follows:
 ~~~~
 $ aws ec2 create-launch-template --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion1 --launch-template-data "{\"NetworkInterfaces\":[{\"DeviceIndex\":0,\"SubnetId\":\"subnet-05ef7d72\"}],\"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":[{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
@@ -69,11 +69,11 @@ The request type is fleet. When the request is fulfilled, requests of type insta
 
 The Spot Fleet launches Spot Instances when your maximum price exceeds the Spot price and capacity is available. The Spot Instances run until they are interrupted or you terminate them.
 To monitor your Spot Fleet using the console
-1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
-2.	In the navigation pane, choose Spot Requests.
-3.	Select your Spot Fleet request. The configuration details are available in the Description tab.
-4.	To list the Spot Instances for the Spot Fleet, choose the Instances tab.
-5.	To view the history for the Spot Fleet, choose the History tab.
+1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+2. In the navigation pane, choose Spot Requests.
+3. Select your Spot Fleet request. The configuration details are available in the Description tab.
+4. To list the Spot Instances for the Spot Fleet, choose the Instances tab.
+5. To view the history for the Spot Fleet, choose the History tab.
 
 # Launching EC2 Spot Instances with On-Demand Instances via an EC2 Fleet
 
@@ -157,23 +157,23 @@ Example output
 To create an Auto Scaling group using a launch template
 
 1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
-2.	On the navigation bar at the top of the screen, select the same region that you used when you created the launch template.
-3.	In the navigation pane, choose Launch Templates.
-4.	Select the launch template and choose Actions, Create Auto Scaling group.
+2. On the navigation bar at the top of the screen, select the same region that you used when you created the launch template.
+3. In the navigation pane, choose Launch Templates.
+4. Select the launch template and choose Actions, Create Auto Scaling group.
 5. On the Configure Auto Scaling group details page, do the following:
-   * For Launch template version, choose the version you just made that includes the InstanceMarketOptions configured (this should be 2).
-   * For Group name, type a name for your Auto Scaling group.
-   * For Group size, type 1.
-   * For Network, choose the VPC in which the subnet used in the launch template belongs.
-   * For Subnet, choose the subnet used in the launch template.
-   * Leave the Advanced Details set to default settings.
-   * Choose Next: Configure scaling policies.
+   1. For Launch template version, choose the version you just made that includes the InstanceMarketOptions configured (this should be 2).
+   2. For Group name, type a name for your Auto Scaling group.
+   3. For Group size, type 1.
+   4. For Network, choose the VPC in which the subnet used in the launch template belongs.
+   5. For Subnet, choose the subnet used in the launch template.
+   6. Leave the Advanced Details set to default settings.
+   7. Choose Next: Configure scaling policies.
 6.	On the Configure scaling policies page, select Keep this group at its initial size, and then choose Review.
 7.	On the Review page, choose Create Auto Scaling group.
 8.	On the Auto Scaling group creation status page, choose Close.
 
 You have now created an Auto Scaling group configured to launch EC2 Spot Instances.
-10	Finding Running Spot Instances
+# Finding Running Spot Instances
 
 A Spot Instance runs until it is interrupted or you terminate it yourself.
 
@@ -181,10 +181,10 @@ Now that we've launched Spot Instances via RunInstances, Spot Fleet, EC2 Fleet, 
 
 To find running Spot Instances using the console
 
-1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
-2.	In the navigation pane, choose Spot Requests.
-3.	You can see both Spot Instance requests and Spot Fleet requests. If a Spot Instance request has been fulfilled, Capacity is the ID of the Spot Instance. For a Spot Fleet, Capacity indicates how much of the requested capacity has been fulfilled. To view the IDs of the instances in a Spot Fleet, choose the expand arrow, or select the fleet and then select the Instances tab.
-4.	Alternatively, in the navigation pane, choose Instances. In the top right corner, choose the Show/Hide icon, and then select Lifecycle. For each instance, Lifecycle is either normal, spot, or scheduled.
+1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+2. In the navigation pane, choose Spot Requests.
+3. You can see both Spot Instance requests and Spot Fleet requests. If a Spot Instance request has been fulfilled, Capacity is the ID of the Spot Instance. For a Spot Fleet, Capacity indicates how much of the requested capacity has been fulfilled. To view the IDs of the instances in a Spot Fleet, choose the expand arrow, or select the fleet and then select the Instances tab.
+4. Alternatively, in the navigation pane, choose Instances. In the top right corner, choose the Show/Hide icon, and then select Lifecycle. For each instance, Lifecycle is either normal, spot, or scheduled.
 # Cleanup
 
 ## Delete Your Auto Scaling Group
