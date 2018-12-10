@@ -16,9 +16,9 @@ You can create a launch template that contains the configuration information to 
 To create a new launch template using the command line
 
 1. You'll need to gather the following data
-    1. AMI ID: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can find a suitable AMI.
-    2. Instance type: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see Instance Types.
-    3. Subnet: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
+    1. **AMI ID**: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can [find a suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
+    2. **Instance type**: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
+    3. **Subnet**: Specify the subnet in which to create a new network interface. For the primary network interface (eth0), this is the subnet in which the instance is launched.
 2. Once you've gathered the data, create the launch template from the command line as follows:
 ~~~~
 aws ec2 create-launch-template --launch-template-name TemplateForSpot \
@@ -41,13 +41,14 @@ aws ec2 create-launch-template --launch-template-name TemplateForSpot \
     }
 }
 ~~~~
-3.	Note the LaunchTemplateId (eg. "lt-0abcd290751193123") or LaunchTemplateName (eg. "TemplateForSpot") of the newly created Launch Template for the next steps.
+3.	Note the **LaunchTemplateId** (eg. "lt-0abcd290751193123") or **LaunchTemplateName** (eg. "TemplateForSpot") of the newly created Launch Template for the next steps.
 
 # Launching an EC2 Spot Instance via the RunInstances API
 
-To launch an EC2 Spot Instance from a launch template using the command line, use the run-instances AWS CLI command and specify the --launch-template parameter as well as the --instance-market-options parameter.
+To launch an EC2 Spot Instance from a launch template using the command line, use the run-instances AWS CLI command and specify the *--launch-template* parameter as well as the *--instance-market-options* parameter.
 ~~~~
-aws ec2 run-instances --launch-template LaunchTemplateName=TemplateForSpot,Version=1 --instance-market-options MarketType=spot
+aws ec2 run-instances --launch-template \
+LaunchTemplateName=TemplateForSpot,Version=1 --instance-market-options MarketType=spot
 ~~~~
 That is all there is to it! You can see your Spot Instance request in the Spot console at https://console.aws.amazon.com/ec2spot.
 
@@ -55,11 +56,11 @@ That is all there is to it! You can see your Spot Instance request in the Spot c
 
 You can create a Spot Fleet request and specify a launch template in the instance configuration. When Amazon EC2 fulfills the Spot Fleet request, it uses the launch parameters defined in the associated launch template.
 
-To create a Spot Fleet request using the console
+## To create a Spot Fleet request using the console
 
 1.	Open the Spot console at https://console.aws.amazon.com/ec2spot.
-2.	If you are new to Spot, you see a welcome page; choose Get started. Otherwise, choose Request Spot Instances.
-3.	For Request type, select Request and Maintain.
+2.	If you are new to Spot, you see a welcome page; choose Get started. Otherwise, choose **Request Spot Instances**.
+3.	For **Request type**, select **Load**.
 4.	For Total target capacity, set the number of units to request to 2. (These units can either be instances, or units of performance characteristics that are important to your application workload, such as vCPUs, memory, and storage.)
 5.	Leave the Optional On-Demand portion set to 0.
 6.	For Requirements, do the following:
