@@ -4,7 +4,7 @@ Table of contents
 <!--ts-->
    * [Overview](#Overview)
    * [Pre-Requisites](#Pre-Requisites)
-   * [Creating a Launch Template](#Creating a Launch Template )
+   * [Creating a Launch Template](#Creating-a-Launch-Template )
    * [Launching an EC2 Spot Instance via the RunInstances API](#Launching an EC2 Spot Instance via the RunInstances API)
    * [Launching EC2 Spot Instances via a Spot Fleet request](#Launching EC2 Spot Instances via a Spot Fleet request)
    * [Monitoring Your Spot Fleet](#Monitoring Your Spot Fleet)
