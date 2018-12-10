@@ -29,8 +29,7 @@ This lab requires:
 # Creating a Launch Template 
 You can create a launch template that contains the configuration information to launch an instance. Launch templates enable you to store launch parameters so that you do not have to specify them every time you launch an instance. For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances. When you launch an instance using the Amazon EC2 console, an AWS SDK, or a command line tool, you can specify the launch template to use.
 
-To create a new launch template using the command line
-
+#### To create a new launch template using the command line
 1. You'll need to gather the following data
     1. **AMI ID**: Specify an AMI ID from which to launch the instance. You can use an AMI that you own, or you can [find a suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
     2. **Instance type**: Choose the instance type. Ensure that the instance type is compatible with the AMI you've specified. For more information, see [Instance Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
@@ -43,8 +42,7 @@ aws ec2 create-launch-template --launch-template-name TemplateForSpot \
 \"ImageId\":\"ami-97785bed\",\"InstanceType\":\"c4.large\",\"TagSpecifications\":\
 [{\"ResourceType\":\"instance\",\"Tags\":[{\"Key\":\"Name\",\"Value\":\"EC2SpotImmersionDay\"}]}]}"
 ~~~~
-
-## Example return
+#### Example return
 ~~~~
 {
     "LaunchTemplate": {
@@ -72,7 +70,7 @@ That is all there is to it! You can see your Spot Instance request in the Spot c
 
 You can create a Spot Fleet request and specify a launch template in the instance configuration. When Amazon EC2 fulfills the Spot Fleet request, it uses the launch parameters defined in the associated launch template.
 
-## To create a Spot Fleet request using the console
+#### To create a Spot Fleet request using the console
 
 1.	Open the Spot console at https://console.aws.amazon.com/ec2spot.
 2.	If you are new to Spot, you see a welcome page; choose Get started. Otherwise, choose **Request Spot Instances**.
@@ -89,7 +87,8 @@ The request type is fleet. When the request is fulfilled, requests of type insta
 # Monitoring Your Spot Fleet
 
 The Spot Fleet launches Spot Instances when your maximum price exceeds the Spot price and capacity is available. The Spot Instances run until they are interrupted or you terminate them.
-To monitor your Spot Fleet using the console
+
+#### To monitor your Spot Fleet using the console
 1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 2. In the navigation pane, choose Spot Requests.
 3. Select your Spot Fleet request. The configuration details are available in the Description tab.
@@ -100,12 +99,11 @@ To monitor your Spot Fleet using the console
 
 An EC2 Fleet contains the configuration information to launch a fleet—or group—of instances. In a single API call, a fleet can launch multiple instance types across multiple Availability Zones, using the On-Demand Instance, Reserved Instance, and Spot Instance purchasing models together. Using EC2 Fleet, you can define separate On-Demand and Spot capacity targets, specify the instance types that work best for your applications, and specify how Amazon EC2 should distribute your fleet capacity within each purchasing model.
 
-To create a new EC2 Fleet using the command line, run the following
-
+#### To create a new EC2 Fleet using the command line, run the following
 ~~~~
 aws ec2 create-fleet --launch-template-configs LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" --target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
 ~~~~
-Example return
+#### Example return
 ~~~~
 {
     "FleetId": "fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183"
@@ -113,11 +111,11 @@ Example return
 ~~~~
 This EC2 Fleet has requested a total capacity of 4 instances- 1 On-Demand and 3 Spot. 
 
-Check them out by running
+#### Check them out by running
 ~~~~
 aws ec2 describe-fleets --fleet-ids fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
 ~~~~
-and
+#### and
 ~~~~
 aws ec2 describe-fleet-instances --fleet-id fleet-e678bfc6-c2b5-4d9f-8700-03b2db30b183
 ~~~~
@@ -130,13 +128,11 @@ To configure Auto Scaling instances, you must specify a launch template, a launc
 
 In order to configure Auto Scaling to use EC2 Spot Instances, you'll need to create a new version of the launch template to add the InstanceMarketOptions setting.
 
-To create a new version of the launch template, run
-
+#### To create a new version of the launch template, run
 ~~~~
 aws ec2 create-launch-template-version --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion2 --source-version 1 --launch-template-data "{\"InstanceMarketOptions\":{\"MarketType\":\"spot\"}}"
 ~~~~
-
-Example output
+#### Example output
 ~~~~
 {
     "LaunchTemplateVersion": {
@@ -175,7 +171,7 @@ Example output
 }
 ~~~~
 
-To create an Auto Scaling group using a launch template
+#### To create an Auto Scaling group using a launch template
 
 1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 2. On the navigation bar at the top of the screen, select the same region that you used when you created the launch template.
@@ -200,7 +196,7 @@ A Spot Instance runs until it is interrupted or you terminate it yourself.
 
 Now that we've launched Spot Instances via RunInstances, Spot Fleet, EC2 Fleet, and an Auto Scaling group, let's go check them out.
 
-To find running Spot Instances using the console
+#### To find running Spot Instances using the console
 
 1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 2. In the navigation pane, choose Spot Requests.
@@ -236,7 +232,7 @@ To cancel a Spot Fleet request using the console
 
 ## Terminating a Spot Instance
 
-To terminate a Spot Instance using the console
+#### To terminate a Spot Instance using the console
 1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 2.	In the navigation pane, choose Instances.
 3.	Select the instance, and choose Actions, Instance State, Terminate.
@@ -246,7 +242,7 @@ To terminate a Spot Instance using the console
 
 If you no longer require a launch template, you can delete it. Deleting a launch template deletes all of its versions.
 
-To delete a launch template
+#### To delete a launch template
 1.	Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 2.	In the navigation pane, choose Launch Templates and select the launch template.
 3.	Choose Actions, Delete template.
