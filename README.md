@@ -102,7 +102,8 @@ An EC2 Fleet contains the configuration information to launch a fleet—or group
 #### To create a new EC2 Fleet using the command line, run the following
 ~~~~
 aws ec2 create-fleet --launch-template-configs \
-LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" --target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
+LaunchTemplateSpecification="{LaunchTemplateName=TemplateForSpot,Version=1}" \
+--target-capacity-specification TotalTargetCapacity=4,OnDemandTargetCapacity=1,DefaultTargetCapacityType=spot
 ~~~~
 #### Example return
 ~~~~
