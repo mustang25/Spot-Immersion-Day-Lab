@@ -132,7 +132,9 @@ In order to configure Auto Scaling to use EC2 Spot Instances, you'll need to cre
 
 #### To create a new version of the launch template, run
 ~~~~
-aws ec2 create-launch-template-version --launch-template-name TemplateForSpot --version-description TemplateForSpotVersion2 --source-version 1 --launch-template-data "{\"InstanceMarketOptions\":{\"MarketType\":\"spot\"}}"
+aws ec2 create-launch-template-version --launch-template-name \
+TemplateForSpot --version-description TemplateForSpotVersion2 \
+--source-version 1 --launch-template-data "{\"InstanceMarketOptions\":{\"MarketType\":\"spot\"}}"
 ~~~~
 #### Example output
 ~~~~
